@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" href="/admin/static/css/clothes.css/">
+</head>
+
+{% block title %}Одежда{% endblock %}
+{% block content %}
+<h2>Одежда</h2>
+
+<div class="form-group">
+    <label for="ai-link">Добавить одежду по ссылке:</label>
+    <input type="text" id="ai-link" placeholder="Введите ссылку на одежду" style="width: 100%; max-width: 500px;">
+    <button id="create-ai-clothes-btn">Добавить</button>
+</div>
+
+<table id="clothes-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Пол</th>
+            <th>Изображение</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody id="clothes-tbody"></tbody>
+</table>
+
+<div class="pagination">
+    <button id="prev-page-btn" disabled>Предыдущая</button>
+    <span id="page-info">Страница 1</span>
+    <button id="next-page-btn">Следующая</button>
+    <button id="load-more-btn" style="margin-left: 10px;">Загрузить ещё</button>
+</div>
+
+<script src="/admin/static/js/clothes.js/"></script>
+
+{% endblock %}

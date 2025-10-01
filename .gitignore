@@ -1,0 +1,14 @@
+.venv/
+*.log
+**/__pycache__/
+build/
+node_modules/
+.idea/
+
+/images
+/logs
+/backups
+postgres-data/
+
+.env.prod
+.env

@@ -1,0 +1,16 @@
+.git
+.cache
+**/__pycache__/
+.env.develop
+.env
+.env.template
+.venv/
+*.log
+build/
+node_modules/
+.idea/
+my_notes.txt
+media/
+mydatabase
+
+

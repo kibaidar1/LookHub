@@ -1,0 +1,76 @@
+/* Main */
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    color: var(--color-light-gray);
+}
+
+.banner__info {
+    display: flex;
+    flex-direction: column;
+    width: clamp(200px, 60vw, 1200px);
+    font-size: var(--font-size-h2);
+    font-weight: 400;
+    text-align: center;
+}
+
+.banner__info h3 {
+    font-size: var(--font-size-h1);
+    padding: 40px 0;
+}
+
+
+/* Looks */
+
+.looks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 10vw;
+}
+
+
+.looks__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100vw, 350px), 1fr));
+    grid-gap: 2rem;
+}
+
+
+.card {
+    position: relative;
+    margin: 20px;
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+  
+.card img {
+    width: 100%;
+    height: auto;
+}
+  
+.card:hover .card__info {
+    bottom: -20px;
+}
+  
+.card__info {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    height: a;
+    background: rgba(0,0,0,0.9);
+    padding: 20px 20px 40px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card__info .card__title {
+    padding-bottom: 20px;
+}
+
+.card__description {
+    font-size: var(--font-size-small-p);
+}

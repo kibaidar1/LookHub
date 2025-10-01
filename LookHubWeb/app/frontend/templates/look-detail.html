@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Look{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Просмотр деталей образа с возможностью покупки вещей">
+<meta property="og:title" content="Look Detail">
+<meta property="og:description" content="Просмотр деталей образа с возможностью покупки вещей">
+<meta property="og:type" content="website">
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/frontend/static/css/look_detail.css">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="visually-hidden">Look Detail</h1>
+    
+    <!-- Секция с изображениями лука -->
+    <section class="look-images" aria-label="Look images">
+        <ul class="look-images__list" id="look-images-list">
+            <!-- Изображения будут подгружаться динамически -->
+        </ul>
+    </section>
+
+    <!-- Секция с информацией о луке -->
+    <section class="look-info" id="look-info" aria-label="Look information">
+        <!-- Информация о луке будет подгружаться динамически -->
+    </section>
+
+    <!-- Секция с одеждой -->
+    <section class="look-clothes" id="look-clothes" aria-label="Look clothes">
+        <!-- Одежда будет подгружаться динамически -->
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/frontend/static/js/look-detail.js"></script>
+{% endblock %} 

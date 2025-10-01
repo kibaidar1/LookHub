@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" href="/admin/static/css/look_detail.css/">
+</head>
+
+{% block title %}Детали лука{% endblock %}
+{% block content %}
+<h2>Детали лука</h2>
+<button id="check-look-btn" style="display: none; background-color: #4CAF50; color: white;">Отметить как проверенный</button>
+<button id="publish-btn" style="background-color: #2196F3; color: white;">Опубликовать в соцсетях</button>
+<button id="edit-btn">Редактировать</button>
+<button id="save-btn" style="display: none;">Сохранить</button>
+<button id="cancel-btn" style="display: none; background-color: #ff4444; color: white;">Отменить</button>
+<button id="delete-btn" style="background-color: #ff4444; color: white;">Удалить лук</button>
+<div id="look-details">
+    <div class="form-group">
+        <label>ID:</label>
+        <p id="look-id"></p>
+    </div>
+    <div class="form-group">
+        <label>Название:</label>
+        <p id="look-name" data-editable="true"></p>
+        <input id="edit-look-name" class="edit-field" type="text" style="display: none;">
+    </div>
+    <div class="form-group">
+        <label>Пол:</label>
+        <p id="look-gender" data-editable="true"></p>
+        <select id="edit-look-gender" class="edit-field" style="display: none;">
+            <option value="мужской">Мужской</option>
+            <option value="женский">Женский</option>
+            <option value="унисекс">Унисекс</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Описание:</label>
+        <p id="look-description" data-editable="true"></p>
+        <textarea id="edit-look-description" class="edit-field" style="display: none;"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Промпты для изображений:</label>
+        <div id="look-image-prompts" data-editable="true"></div>
+        <div id="edit-look-image-prompts" class="edit-field" style="display: none;"></div>
+        <button id="add-prompt-btn" class="edit-field" style="display: none;">Добавить промпт</button>
+    </div>
+    <div class="form-group">
+        <label>Изображения:</label>
+        <div id="look-image-urls" data-editable="true"></div>
+        <div id="edit-look-image-urls" class="edit-field" style="display: none;"></div>
+    </div>
+    <div class="form-group">
+        <label>Проверено:</label>
+        <p id="look-checked" data-editable="true"></p>
+        <select id="edit-look-checked" class="edit-field" style="display: none;">
+            <option value="true">Да</option>
+            <option value="false">Нет</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Опубликовано:</label>
+        <p id="look-pushed" data-editable="true"></p>
+        <select id="edit-look-pushed" class="edit-field" style="display: none;">
+            <option value="true">Да</option>
+            <option value="false">Нет</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Категории одежды:</label>
+        <div id="look-clothes-categories"></div>
+    </div>
+</div>
+
+<a href="/admin/looks/">Назад к списку</a>
+
+<script src="/admin/static/js/look_detail.js/"></script>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" href="/admin/static/css/looks.css/">
+</head>
+
+{% block title %}Список луков{% endblock %}
+{% block content %}
+<h2>Список луков</h2>
+
+<!-- Поле для генерации look с помощью AI -->
+<div class="form-group">
+    <label for="ai-description">Создать look с помощью AI:</label>
+    <textarea id="ai-description" placeholder="Введите описание для генерации лука" rows="4" cols="50"></textarea>
+    <label for="ai-gender">Пол:</label>
+    <select id="ai-gender">
+        <option value="мужской">Мужской</option>
+        <option value="женский">Женский</option>
+        <option value="унисекс" selected>Унисекс</option>
+    </select>
+    <button id="create-ai-look-btn">Создать</button>
+</div>
+
+<!-- Фильтры -->
+<div class="form-group">
+    <label>Сортировка:</label>
+    <div class="sort-buttons">
+        <button class="sort-btn" data-field="id" data-direction="desc">ID ↓</button>
+        <button class="sort-btn" data-field="name" data-direction="desc">Название ↓</button>
+        <button class="sort-btn" data-field="gender" data-direction="desc">Пол ↓</button>
+        <button class="sort-btn" data-field="checked" data-direction="desc">Проверено ↓</button>
+        <button class="sort-btn" data-field="pushed" data-direction="desc">Опубликовано ↓</button>
+    </div>
+</div>
+
+<!-- Список луков -->
+<div id="looks-list"></div>
+
+<!-- Пагинация -->
+<div class="pagination">
+    <button id="prev-page-btn" disabled>Предыдущая</button>
+    <span id="page-info">Страница 1</span>
+    <button id="next-page-btn">Следующая</button>
+    <button id="load-more-btn" style="margin-left: 10px;">Загрузить ещё</button>
+</div>
+
+<script src="/admin/static/js/looks.js/"></script>
+
+{% endblock %}

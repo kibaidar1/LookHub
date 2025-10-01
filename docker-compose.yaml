@@ -1,0 +1,102 @@
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    env_file:
+      - ./LookHubWeb/.env
+    environment:
+      - TZ=Europe/Moscow
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U lookhubweb -d lookhub'"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7
+    container_name: redis
+    restart: always
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "6379:6379"
+
+  lookhub-web:
+    container_name: lookhub-web
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    build:
+      context: ./LookHubWeb
+    env_file:
+      - ./LookHubWeb/.env
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ./images:/lookhubweb/app/static/images
+    command: [ "sh", "docker/app.sh" ]
+    # Убираем публичный порт, так как теперь доступ через Nginx
+    expose:
+      - 8000
+
+  lookhub-worker:
+    build:
+      context: ./LookHubWeb
+    command: [ "sh", "docker/celery.sh"]
+    env_file:
+      - ./LookHubWeb/.env
+    environment:
+      - TZ=Europe/Moscow
+    depends_on:
+      - lookhub-web
+      - redis
+
+  socialmediaposter-worker:
+    build:
+      context: ./SocialMediaPoster
+    container_name: socialmediaposter-worker
+    env_file:
+      - ./SocialMediaPoster/.env
+    environment:
+      - TZ=Europe/Moscow
+    depends_on:
+      - redis
+    command: [ "sh", "docker/app.sh" ]
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.flower
+    container_name: flower
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - TZ=Europe/Moscow
+    depends_on:
+      - redis
+      - lookhub-worker
+      - socialmediaposter-worker
+    expose:
+      - 5555
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    environment:
+      - TZ=Europe/Moscow
+    depends_on:
+      - lookhub-web
+      - dashboard
+    volumes:
+      # Монтируем логи Nginx для удобства отладки
+      - ./nginx-logs:/var/log/nginx
+    restart: unless-stopped
+

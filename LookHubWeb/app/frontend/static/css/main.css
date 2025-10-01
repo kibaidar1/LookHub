@@ -1,0 +1,195 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap');
+
+
+:root {
+    --color-dark: #111;
+    --color-dark-gray: #202020;
+    --color-light: #FFFFFF;
+    --color-light-gray: #8a8a8e;
+
+    --border-radius: 30px;
+    --border: 1px solid var(--color-light);
+
+    --font-family-base: "Inter", sans-serif;
+    --font-family-accent: "Russo One", sans-serif;
+
+    --font-size-h1: clamp(24px, 5.4vw, 70px);
+    --font-size-h2: clamp(18px, 3.6vw, 46px);
+    --font-size-p: clamp(14px, 2.1vw, 28px);
+    --font-size-small-p: clamp(12px, 1.4vw, 18px);
+
+
+
+    --container-width: 1600px;
+    --container-padding-x: 30px;
+
+    --transition-duration: 0.3s;
+
+    --card-border: 1px solid var(--color-light);
+    --card-border-radius: 60px
+}
+
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-light-gray);
+    background-color: var(--color-dark);
+    font-size: var(--font-size-p);
+}
+
+.container {
+    max-width: calc(var(--container-width) + 2 * var(--container-padding-x));
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+  }
+
+main {
+    margin-top: clamp(80px, 18vw, 220px);
+}
+
+a {
+    color: var(--color-light);
+}
+
+a, button, input, textarea, svg * { 
+    transition-duration: var(--transition-duration);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-light);
+    font-family:var(--font-family-accent);
+    font-weight: 400;
+}
+
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--font-family-accent);
+    color: var(--color-light);
+    gap: min(15px, 2vw);
+}
+
+.logo object {
+    width: clamp(30px, 6vw, 50px);
+    height: clamp(30px, 6vw, 50px);
+}
+
+.logo object img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo__text {
+    font-size: clamp(16px, 2vw, 24px);
+    white-space: nowrap;
+}
+
+.link {
+    color: var(--color-light-gray);
+    text-decoration: none;
+    position: relative;
+}
+
+.link:hover {
+    color: var(--color-light);
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-light);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* Header */
+
+.header {
+    padding: min(6vw, 40px) 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--color-dark);
+}
+
+.header__line {
+    font-family: var(--font-family-accent);
+    color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 30px;
+}
+
+
+.header-menu__list {
+    column-gap: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: min(15vw, 150px) 0;
+    border-top: 1px solid var(--color-light-gray);
+}
+
+.footer .logo {
+    align-self: center;
+    padding-bottom: min(5vw, 50px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-content {
+    width: clamp(100px, 80vw, 1600px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.footer-content__item {
+    /* border-right: 1px solid var(--color-light-gray); */
+    text-align: center;
+}
+
+.footer-content__item h3 {
+    padding-bottom: 10px;
+}
+

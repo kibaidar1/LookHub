@@ -1,0 +1,406 @@
+/* Базовые стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Навигация */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-brand {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Контейнер */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовки */
+h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+td img {
+    max-width: 30%;
+    height: auto;
+}
+
+/* Форма и детали */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group p {
+    margin: 0;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #5cb85c;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Ссылки */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Категории одежды и изображения */
+#look-clothes-categories .category-item,
+#look-image-urls img,
+#clothes-image-url img {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#look-clothes-categories h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+
+#look-clothes-categories img,
+#look-image-urls img,
+#clothes-image-url img {
+    max-width: 50%;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links {
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    td img,
+    #look-clothes-categories img,
+    #look-image-urls img,
+    #clothes-image-url img {
+        max-width: 50%;
+    }
+}
+
+/* Поля редактирования */
+.edit-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.edit-field[type="text"],
+.edit-field[type="textarea"] {
+    margin-top: 5px;
+}
+
+.edit-field[type="textarea"] {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Промпты и изображения */
+.prompt-item, .image-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.prompt-input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.image-item img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.remove-prompt-btn, .remove-image-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.remove-prompt-btn:hover, .remove-image-btn:hover {
+    opacity: 0.9;
+}
+
+#add-prompt-btn {
+    background-color: #5cb85c;
+    margin-top: 10px;
+}
+
+.edit-field[multiple] {
+    height: 150px;
+}
+
+#edit-btn, #save-btn {
+    margin: 0 10px 10px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    opacity: 0.9;
+}
+#clothes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+#clothes-table th, #clothes-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+#clothes-table th {
+    background-color: #f2f2f2;
+}
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.delete-btn:hover {
+    opacity: 0.9;
+}
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pagination button {
+    padding: 8px 16px;
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.pagination button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group textarea, .form-group select {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    opacity: 0.9;
+}
+.look-item {
+    margin-bottom: 20px;
+}
+.look-item h3 {
+    margin: 0 0 10px;
+}
+.look-item p {
+    margin: 5px 0;
+}
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.delete-btn:hover {
+    opacity: 0.9;
+}
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pagination button {
+    padding: 8px 16px;
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}.pagination button:hover:not(:disabled) {
+    opacity: 0.9;
+}.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+.form-group button { margin-top: 10px; padding: 8px 16px; background-color: #5cb85c; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.form-group button:hover { opacity: 0.9; }
+#clothes-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+#clothes-table th, #clothes-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+#clothes-table th { background-color: #f2f2f2; }
+.delete-btn { background-color: #d9534f; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+.delete-btn:hover { opacity: 0.9; }
+.pagination { margin-top: 20px; display: flex; align-items: center; gap: 10px; }
+.pagination button { padding: 8px 16px; background-color: #5bc0de; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.pagination button:disabled { background-color: #ccc; cursor: not-allowed; }
+.pagination button:hover:not(:disabled) { opacity: 0.9; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group textarea, .form-group select { width: 100%; max-width: 500px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+.form-group button { margin-top: 10px; padding: 8px 16px; background-color: #5cb85c; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.form-group button:hover { opacity: 0.9; }
+.look-item { margin-bottom: 20px; }
+.look-item h3 { margin: 0 0 10px; }
+.look-item p { margin: 5px 0; }
+.delete-btn { background-color: #d9534f; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+.delete-btn:hover { opacity: 0.9; }
+.pagination { margin-top: 20px; display: flex; align-items: center; gap: 10px; }
+.pagination button { padding: 8px 16px; background-color: #5bc0de; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.pagination button:disabled { background-color: #ccc; cursor: not-allowed; }
+.pagination button:hover:not(:disabled) { opacity: 0.9; }
+
+
+

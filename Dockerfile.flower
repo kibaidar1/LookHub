@@ -1,0 +1,13 @@
+FROM python:3.11-slim
+
+# Установка зависимостей
+RUN pip install flower celery[redis]
+
+# Создание рабочей директории
+WORKDIR /app
+
+# Открытие порта
+EXPOSE 5555
+
+# Команда по умолчанию с поддержкой прокси
+CMD ["celery", "--broker=redis://redis:6379/0", "--result-backend=redis://redis:6379/1", "flower", "--port=5555", "--url_prefix=/admin/flower"]

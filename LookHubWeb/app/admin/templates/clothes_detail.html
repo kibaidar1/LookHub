@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+<head>
+    <link rel="stylesheet" href="/admin/static/css/clothes_detail.css/">
+</head>
+
+{% block title %}Детали одежды{% endblock %}
+{% block content %}
+<h2>Детали одежды</h2>
+<button id="edit-btn">Редактировать</button>
+<button id="save-btn" style="display: none;">Сохранить</button>
+<div id="clothes-details">
+    <div class="form-group">
+        <label>ID:</label>
+        <p id="clothes-id"></p>
+    </div>
+    <div class="form-group">
+        <label>Название:</label>
+        <p id="clothes-name" data-editable="true"></p>
+        <input id="edit-clothes-name" class="edit-field" type="text" style="display: none;">
+    </div>
+    <div class="form-group">
+        <label>Описание:</label>
+        <p id="clothes-description" data-editable="true"></p>
+        <textarea id="edit-clothes-description" class="edit-field" style="display: none;"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Цвета:</label>
+        <div id="clothes-colours" data-editable="true"></div>
+        <div id="edit-clothes-colours" class="edit-field" style="display: none;">
+            <div id="colour-inputs"></div>
+            <button id="add-colour-btn">Добавить цвет</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Пол:</label>
+        <p id="clothes-gender" data-editable="true"></p>
+        <select id="edit-clothes-gender" class="edit-field" style="display: none;">
+            <option value="мужской">Мужской</option>
+            <option value="женский">Женский</option>
+            <option value="унисекс">Унисекс</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Ссылка:</label>
+        <p id="clothes-link" data-editable="true"></p>
+        <input id="edit-clothes-link" class="edit-field" type="text" style="display: none;">
+    </div>
+    <div class="form-group">
+        <label>URL изображения:</label>
+        <p id="clothes-image-url" data-editable="true"></p>
+        <input id="edit-clothes-image-url" class="edit-field" type="text" style="display: none;">
+    </div>
+</div>
+<a href="/admin/clothes/">Назад к списку</a>
+
+<!-- Список автозаполнения для цветов -->
+<datalist id="colour-list">
+    <option value="белый">
+    <option value="бежевый">
+    <option value="серый">
+    <option value="красынй">
+    <option value="розовый">
+    <option value="ораньжевый">
+    <option value="желтый">
+    <option value="зеленый">
+    <option value="голубой">
+    <option value="синий">
+    <option value="фиолетовый">
+    <option value="коричневый">
+    <option value="черный">
+</datalist>
+
+<script src="/admin/static/js/clothes_detail.js/"></script>
+
+{% endblock %}

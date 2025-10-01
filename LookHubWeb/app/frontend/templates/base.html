@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/static/css/reset.css">
+    <link rel="stylesheet" href="/frontend/static/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    {% block extra_css %}{% endblock %}
+    <title>{% block title %}Look Hub{% endblock %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__line">
+                <a class="logo" href="/">
+                    <object type="image/svg+xml" data="/frontend/static/icon.svg">
+                        <img src="/frontend/static/icon.svg" alt="LOOK HUB logo" />
+                    </object>
+                    <span class="logo__text">LOOK HUB</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="content container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer container">
+        <h2 class="visually-hidden">Footer</h2>
+        <a class="logo" href="/">
+            <object type="image/svg+xml" data="/frontend/static/icon.svg">
+                <img src="/frontend/static/icon.svg" alt="LOOK HUB logo" />
+            </object>
+            <span class="logo__text">LOOK HUB</span>
+        </a>
+        <div class="footer-content">
+            <div class="footer-content__item soscial-media">
+                <h3>Соцсети</h3>
+                <ul>
+                    <li><a class="link" href="https://t.me/lookhuber" target="_blank">Telegram</a></li>
+                    <li><a class="link" href="https://ru.pinterest.com/lookhuber" target="_blank">Pinterest</a></li>
+                </ul>
+            </div>
+            <div class="footer-content__item contacts">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a class="link" href="mailto:lookhuber@gmail.com">lookhuber@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    {% block extra_js %}{% endblock %}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 500,
+            offset: 100,
+            easing: 'ease-in-sine'
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админка | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/admin/static/css/styles.css/">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/admin/" class="nav-brand">Админка</a>
+            <div class="nav-links">
+                <a href="/admin/looks/">Луки</a>
+                <a href="/admin/clothes/">Одежда</a>
+                <a href="/admin/flower/tasks">Dashboard</a>
+                {% if request.url.path == '/admin/login' %}
+                    <a href="/admin/login" id="login-link">Войти</a>
+                {% else %}
+                    <a href="/admin/logout" id="logout-link">Выйти</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <script>
+        // Patch fetch to add Authorization header with api_token for /api/* requests
+        const originalFetch = window.fetch;
+        window.fetch = async function(input, init = {}) {
+            let url = (typeof input === 'string') ? input : input.url;
+            if (url && url.startsWith('/api/')) {
+                const token = localStorage.getItem('api_token');
+                if (token) {
+                    init.headers = init.headers || {};
+                    if (!(init.headers instanceof Headers)) {
+                        init.headers = new Headers(init.headers);
+                    }
+                    init.headers.set('Authorization', 'Bearer ' + token);
+                }
+            }
+            return originalFetch(input, init);
+        };
+    </script>
+</body>
+</html>

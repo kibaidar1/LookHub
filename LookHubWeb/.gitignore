@@ -1,0 +1,15 @@
+.venv/
+*.log
+**/__pycache__/
+build/
+node_modules/
+.idea/
+
+.env.develop
+.env
+/my_notes.txt
+app/static/images/
+ai-models/
+
+pgdata/
+postgres-data/

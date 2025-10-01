@@ -1,0 +1,117 @@
+/* Look */
+.look-images__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100vw, 300px), 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.image__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image__item img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--card-border-radius);
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+.look-info {
+    display: flex;
+    flex-direction: column;
+    width: clamp(200px, 60vw, 1200px);
+    margin: 5vw auto;
+}
+
+.look-name {
+    font-size: var(--font-size-h1);
+    align-items: center;
+    text-align: center;
+    padding: 2vw 0;
+}
+
+.look-description {
+    text-align: justify;
+    padding: 5vw 0;
+}
+
+.look-author {
+    color: var(--color-light);
+    padding: 1vw 0;
+}
+
+.clothes-categories__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.clothes-categories__item {
+    border-top: 2px solid var(--color-light);
+    padding: 3vw;
+}
+
+.clothes-category__name {
+    font-size: var(--font-size-h2);
+    padding: 2vw;
+}
+
+.links__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(30vw, 200px), 0.2fr));
+    grid-gap: 1.5rem;
+    align-items: start;
+}
+
+.links__item {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-dark-gray);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.links__item:hover {
+    transform: translateY(-5px);
+}
+
+.clothes-item__image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.clothes-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: var(--color-white);
+}
+
+.clothes-item__info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.clothes-item__name {
+    font-size: var(--font-size-h3);
+    margin: 0;
+    text-align: center;
+}
+
+.clothes-item__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
