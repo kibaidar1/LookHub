@@ -8,7 +8,8 @@ from celery import Celery
 from celery.schedules import crontab
 
 from app.application.use_cases import LooksUseCase
-from app.config import REDIS_HOST, REDIS_PORT, CELERY_SCHEDULE_HOURS, CELERY_SCHEDULE_MINUTE
+from app.config import (REDIS_HOST, REDIS_PORT,
+                        SENDING_LOOKS_SCHEDULE_HOURS, SENDING_LOOKS_SCHEDULE_MINUTE)
 from app.domain.entities.looks import LookUpdate
 from app.infrastructure.database import async_session_maker
 from app.infrastructure.repositories.clothes import ClothesRepository
@@ -123,8 +124,8 @@ celery_app.conf.beat_schedule = {
     'social-then-send': {
         'task': 'process_social_media_results',
         'schedule': crontab(
-            hour=CELERY_SCHEDULE_HOURS,
-            minute=CELERY_SCHEDULE_MINUTE
+            hour=SENDING_LOOKS_SCHEDULE_HOURS,
+            minute=SENDING_LOOKS_SCHEDULE_MINUTE
         ),
         'options': {'link': send_looks_to_queue.si()},
     }
