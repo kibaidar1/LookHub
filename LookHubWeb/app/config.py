@@ -45,5 +45,5 @@ ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "admin123")
 FLOWER_URL = "http://flower:5555/admin/flower"
 
 # Celery settings
-CELERY_SCHEDULE_HOURS = "*"
-CELERY_SCHEDULE_MINUTE = "*/2"
+SENDING_LOOKS_SCHEDULE_HOURS = "*"
+SENDING_LOOKS_SCHEDULE_MINUTE = "*/10"
