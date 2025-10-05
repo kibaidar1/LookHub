@@ -42,45 +42,43 @@ class Look(BaseModel):
     )
 
     @field_validator("image_urls", mode="after")
-    def create_image_urls(cls, value):
+    def add_api_host(cls, value):
         """Adds API_HOST prefix to image URLs during serialization.
-        
+
         Args:
             value (list[str]): List of image URLs
-            
+
         Returns:
             list[str]: List of image URLs with API_HOST prefix
         """
         if not value:
             return []
         return [
-            f"{API_HOST}/images/{url}" if not url.startswith("http") else url
+            f"{API_HOST}/images/{url}"
+            if isinstance(url, str) and not url.startswith("http")
+            else url
             for url in value
         ]
 
-    @field_validator("image_urls", mode="before")
-    def strip_api_host(cls, value):
+    def model_dump(self, **kwargs):
         """Removes API_HOST prefix from image URLs during deserialization.
-        
-        Args:
-            value (list[str]): List of image URLs
-            
+
         Returns:
             list[str]: List of image URLs without API_HOST prefix
         """
-        if not value:
-            return []
-        if isinstance(value, list):
-            prefix = f"{API_HOST}/images/"
-            return [
-                url.replace(prefix, "") if url.startswith(prefix) else url
-                for url in value
-            ]
-        return value
+        data = super().model_dump(**kwargs)
+        prefix = f"{API_HOST}/images/"
+        data["image_urls"] = [
+            url.replace(prefix, "")
+            if isinstance(url, str) and url.startswith(prefix)
+            else url
+            for url in data.get("image_urls", [])
+        ]
+        return data
 
     def get_storage_paths(self) -> list[str]:
         """Get the storage paths of images without API_HOST prefix.
-        
+
         Returns:
             list[str]: List of image storage paths
         """

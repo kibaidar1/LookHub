@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 import os
 from app.config import UPLOAD_IMAGES_DIR
@@ -16,7 +17,8 @@ async def save_image(image: Image, filename: str) -> str:
         str: The generated filename of the saved image
     """
     image_name = f"{filename}-{uuid.uuid4()}.png"
-    image.save(UPLOAD_IMAGES_DIR / image_name)
+    path = UPLOAD_IMAGES_DIR / image_name
+    await asyncio.to_thread(image.save, path)
     return image_name
 
 

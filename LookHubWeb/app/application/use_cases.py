@@ -1,3 +1,5 @@
+import asyncio
+
 from PIL import Image, UnidentifiedImageError
 from io import BytesIO
 
@@ -142,17 +144,23 @@ class LooksUseCase(CRUDUseCase[LookCreate, LookUpdate, LookRead]):
         """
         look = await self.get_one_by_id(look_id)
         look_images = look.get_storage_paths()
-        for image in images:
+
+        async def process_image(image_data: bytes) -> str:
             try:
-                valid_image = Image.open(BytesIO(image))
-                image_url = await save_image(valid_image, str(look_id))
-                look_images.append(image_url)
+                valid_image = await asyncio.to_thread(Image.open, BytesIO(image_data))
+                return await save_image(valid_image, str(look_id))
             except UnidentifiedImageError as e:
                 raise InvalidFileError from e
             except Exception as e:
                 raise UnknownError from e
-        updated_look = await self.update_one(look_id,
-                                             data=LookUpdate(image_urls=look_images))
+
+        # Параллельная обработка всех изображений
+        results = await asyncio.gather(*(process_image(img) for img in images))
+        look_images.extend(results)
+
+        updated_look = await self.update_one(
+            look_id, data=LookUpdate(image_urls=look_images)
+        )
         return updated_look
 
     async def delete_clothes_category(
